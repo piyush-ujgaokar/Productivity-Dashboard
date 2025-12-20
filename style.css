@@ -2,24 +2,25 @@
     --pri:#F8F4E1;
     --sec:#4E1F00;
     --tri1:#FEBA17;
-    --tri1:#74512D;
+    --tri2:#74512D;
 }
 
 @font-face {
-    font-family: font1;
+    font-family: font3;
     font-weight: 200;
-    src: url('./fonts/Aeonika-BF66fcc5a8cc5db.otf');
+    src: url('./fonts/Aeonik\ Regular.ttf');
 }
 
 @font-face {
     font-family: font2;
     font-weight: 500;
-    src: url('./fonts//fonnts.com-Aeonik-Bold.ttf');
+    src: url('./fonts/fonnts.com-Aeonik-Bold.ttf');
 }
 
 @font-face {
     font-family: font1;
-    src: url('./fonts//fonnts.com-Aeonik-Regular.ttf');
+    font-weight: 400;
+    src: url('./fonts/fonnts.com-Aeonik-Regular.ttf');
 }
 
 *{
@@ -36,9 +37,56 @@ html,body{
     height: 100%;
     width: 100%;
     background-color: var(--sec);
+    color: var(--pri);
 
 }
-h1{
-    font-size: 5vw;
-    color: var(--pri);
+nav{
+    width: 100%;
+    height: 60px;
+    background-color: var(--tri2);
+}
+section.allElem{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+.elem{
+    height: 400px;
+    width: 280px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--tri1);
+    font-size: 20px;
+    border-radius: 20px;
+    transition: all ease 0.3s;
+}
+.elem img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.elem h1{
+    position: absolute;
+    bottom: 5%;
+    right: 7%;
+    font-size: 2vw;
+    font-weight: 700;
+    font-family: font1;
+}
+.elem:active{
+    scale: 0.97;
+}
+
+.fullElem{
+    width: 100%;
+    height: 100%;
+    background-color: var(--sec);
+    padding: 20px;
+    font-size: 60px;
+    display: none;
 }
