@@ -32,17 +32,23 @@ function todoList() {
   }
 
   function renderTask() {
-    localStorage.setItem("currentTask", JSON.stringify(currentTask));
     let allTask = document.querySelector(".allTask");
     let sum = "";
     currentTask.forEach((elem, idx) => {
       sum += `<div class="task">
-              <h2>${elem.title} <span class=${elem.check}>imp</span></h2>
-              <button id=${idx}>Mark as Completed</button>
-           </div>`;
-    });
+          <h2>${elem.title} <span class=${elem.check}>imp</span></h2>
+          <button id=${idx}>Mark as Completed</button>
+          </div>`;
+      allTask.innerHTML = sum;
+      localStorage.setItem("currentTask", JSON.stringify(currentTask));
 
-    allTask.innerHTML = sum;
+      document.querySelectorAll(".task button").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          currentTask.splice(btn.id, 1);
+          renderTask();
+        });
+      });
+    });
   }
   renderTask();
 
@@ -64,24 +70,6 @@ function todoList() {
     detailInput.value = "";
     taskCheckBox.checked = false;
     renderTask();
-
-    location.reload();
-  });
-
-  let markCompletedBtn = document.querySelectorAll(".task button");
-  markCompletedBtn.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      currentTask.splice(btn.id, 1);
-      renderTask();
-      location.reload();
-    });
   });
 }
 todoList();
-
-
-
-
-
-
-

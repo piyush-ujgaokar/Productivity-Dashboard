@@ -109,10 +109,6 @@ section.allElem{
     scale: 0.97;
 }
 
-.todo-list-fullPage {
-    display: block;
-}
-
 .todo-list-fullPage h2{
     font-size: 3vw;
 }
