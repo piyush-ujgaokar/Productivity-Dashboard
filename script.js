@@ -22,23 +22,15 @@ let titleInput = document.querySelector(".addTask form #task-input");
 let detailInput = document.querySelector(".addTask form textarea");
 let taskCheckBox = document.querySelector(".addTask form #check");
 
-let currentTask = [
-  {
-    title: "Gym Jao",
-    detail: "Gym Jao Body banao",
-    check: true,
-  },
-  {
-    title: "video dekho",
-    detail: "Apptitude video dekho",
-    check: true,
-  },
-  {
-    title: "ghumne jao",
-    detail: "pahadio me ghumo",
-    check: false,
-  },
-];
+var currentTask=[]
+
+    if(localStorage.getItem('currentTask')){
+       currentTask=JSON.parse(localStorage.getItem('currentTask'))
+    }else{
+        console.log("task is empty");
+    }
+
+
 
 function renderTask() {
   let allTask = document.querySelector(".allTask");
@@ -67,6 +59,7 @@ form.addEventListener("submit", function (e) {
     detail: detailInput.value,
     check: taskCheckBox.checked,
   });
+   localStorage.setItem('currentTask',JSON.stringify(currentTask))
   titleInput.value=''
   detailInput.value='' 
   taskCheckBox.checked=false
