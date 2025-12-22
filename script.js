@@ -17,51 +17,71 @@ function openFeatures() {
 }
 openFeatures();
 
-let form = document.querySelector(".addTask form");
-let titleInput = document.querySelector(".addTask form #task-input");
-let detailInput = document.querySelector(".addTask form textarea");
-let taskCheckBox = document.querySelector(".addTask form #check");
+function todoList() {
+  let form = document.querySelector(".addTask form");
+  let titleInput = document.querySelector(".addTask form #task-input");
+  let detailInput = document.querySelector(".addTask form textarea");
+  let taskCheckBox = document.querySelector(".addTask form #check");
 
-var currentTask=[]
+  var currentTask = [];
 
-    if(localStorage.getItem('currentTask')){
-       currentTask=JSON.parse(localStorage.getItem('currentTask'))
-    }else{
-        console.log("task is empty");
-    }
+  if (localStorage.getItem("currentTask")) {
+    currentTask = JSON.parse(localStorage.getItem("currentTask"));
+  } else {
+    console.log("task is empty");
+  }
 
-
-
-function renderTask() {
-  let allTask = document.querySelector(".allTask");
-  let sum = "";
-  currentTask.forEach((elem) => {
-    sum += `<div class="task">
+  function renderTask() {
+    localStorage.setItem("currentTask", JSON.stringify(currentTask));
+    let allTask = document.querySelector(".allTask");
+    let sum = "";
+    currentTask.forEach((elem, idx) => {
+      sum += `<div class="task">
               <h2>${elem.title} <span class=${elem.check}>imp</span></h2>
-              <button>Mark as Completed</button>
+              <button id=${idx}>Mark as Completed</button>
            </div>`;
-  });
+    });
 
-  allTask.innerHTML = sum;
-}
-renderTask();
-
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-//   console.log(titleInput.value);
-  // console.log(detailInput.value);
-
-  // console.log(taskCheckBox.checked);
-  // console.log(allTask);
-
-  currentTask.push({
-    title: titleInput.value,
-    detail: detailInput.value,
-    check: taskCheckBox.checked,
-  });
-   localStorage.setItem('currentTask',JSON.stringify(currentTask))
-  titleInput.value=''
-  detailInput.value='' 
-  taskCheckBox.checked=false
+    allTask.innerHTML = sum;
+  }
   renderTask();
-});
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    //   console.log(titleInput.value);
+    // console.log(detailInput.value);
+
+    // console.log(taskCheckBox.checked);
+    // console.log(allTask);
+
+    currentTask.push({
+      title: titleInput.value,
+      detail: detailInput.value,
+      check: taskCheckBox.checked,
+    });
+
+    titleInput.value = "";
+    detailInput.value = "";
+    taskCheckBox.checked = false;
+    renderTask();
+
+    location.reload();
+  });
+
+  let markCompletedBtn = document.querySelectorAll(".task button");
+  markCompletedBtn.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      currentTask.splice(btn.id, 1);
+      renderTask();
+      location.reload();
+    });
+  });
+}
+todoList();
+
+
+
+
+
+
+
