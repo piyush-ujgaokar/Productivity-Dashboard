@@ -1,6 +1,6 @@
 :root{
     --pri:#F8F4E1;
-    --sec:#4E1F00;
+    --sec:#411c03;
     --tri1:#e1a61ddc;
     --tri2:#74512D;
     --red:red;
@@ -243,4 +243,57 @@ section.allElem{
 }
 .check-box input,label{
     cursor: pointer;
+}
+
+
+
+
+
+.Daily-planner-fullPage{
+    display: block;
+}
+.Daily-planner-fullPage h1{
+    font-size: 3vw;
+}
+.Daily-planner-fullPage .day-planner{
+    margin-top: 1vw;
+    width: 100%;
+    height: 90%;
+    background-color: var(--tri2);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.day-planner .day-planner-time{
+    align-items: center;
+    position: relative;
+    display: flex;
+    width: 49%;
+    margin-bottom: 15px;
+    /* background-color: var(--sec); */
+}
+.day-planner .day-planner-time p{
+        position: absolute;
+        top: 2%;
+        font-size: 1vw;
+        font-weight: 600;
+        left: 1%;
+
+}
+.day-planner .day-planner-time input{
+    width: 100%;
+    padding: 17px 30px;
+    font-size: 1.3vw;
+    background-color: var(--sec);
+    border-radius: 10px;
+    color: var(--pri);
+    border: none;
+    font-weight: 600;
+    margin-top: 20px;
+
+    outline: none;
 }

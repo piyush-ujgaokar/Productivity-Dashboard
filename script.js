@@ -23,7 +23,7 @@ function todoList() {
   let detailInput = document.querySelector(".addTask form textarea");
   let taskCheckBox = document.querySelector(".addTask form #check");
 
-  var currentTask = [];
+  let currentTask = [];
 
   if (localStorage.getItem("currentTask")) {
     currentTask = JSON.parse(localStorage.getItem("currentTask"));
@@ -73,3 +73,39 @@ function todoList() {
   });
 }
 todoList();
+
+let dayPlanner=document.querySelector(".day-planner")
+let hours=Array.from({length:18},(_,idx)=>`${6+idx}:00 - ${7+idx}:00`)
+
+
+
+let time=''
+let dayPlanData=JSON.parse(localStorage.getItem('dayPlanData')) ||{}
+
+console.log(dayPlanData);
+
+
+hours.forEach((elem,idx)=>{
+    time+=`<div class="day-planner-time">
+        <p>${elem}</p>
+        <input id=${idx} type="text" placeholder="Type Your Daily Plan here.....">
+      </div>`
+
+      dayPlanner.innerHTML=time
+
+    let dayPlannerInput=document.querySelectorAll(".day-planner-time input")
+
+    dayPlannerInput.forEach((elem)=>{
+        elem.addEventListener('input',function(){
+          console.log(elem.id);
+          
+          dayPlanData[elem.id]=elem.value
+          
+          localStorage.setItem('dayPlanData',JSON.stringify(dayPlanData))
+          
+        })
+        
+    })
+    
+  })
+  
