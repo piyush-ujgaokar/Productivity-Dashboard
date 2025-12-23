@@ -250,7 +250,7 @@ section.allElem{
 
 
 .Daily-planner-fullPage{
-    display: block;
+    /* display: block; */
 }
 .Daily-planner-fullPage h1{
     font-size: 3vw;
