@@ -114,5 +114,25 @@ hours.forEach((elem,idx)=>{
 
 
 }
-
 dailyPlanner()
+
+
+
+function motivationalQuote(){
+
+  let quote=document.querySelector(".motivation-2 p")
+let author=document.querySelector(".motivation-3 h3")
+
+async function quotes(){
+  let response= await fetch('https://motivational-spark-api.vercel.app/api/quotes/random')
+  let data=await response.json()
+  
+  quote.innerHTML=data.quote;
+  author.innerHTML=data.author
+  
+  
+}
+quotes()
+
+}
+motivationalQuote()
