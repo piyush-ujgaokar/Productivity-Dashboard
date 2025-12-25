@@ -136,13 +136,13 @@ quotes()
 motivationalQuote()
 
 
-let totalSeconds=(25*60)
 let timer=document.querySelector(".pomo-timer h2")
 let startBtn=document.querySelector(".pomo-timer .start")
 let pauseBtn=document.querySelector(".pomo-timer .pause")
 let resetBtn=document.querySelector(".pomo-timer .reset")
 
 let timeInterval=null;
+let totalSeconds=(25*60)
 function updateTime(){
    let minutes=Math.floor(totalSeconds/60)
     let seconds=totalSeconds%60
@@ -162,3 +162,10 @@ function pauseTimer(){
   clearInterval(timeInterval)
 }
 pauseBtn.addEventListener("click",pauseTimer)
+
+function resetTimer(){
+  clearInterval(timeInterval)
+  totalSeconds=(25*60)
+  updateTime()
+}
+resetBtn.addEventListener("click",resetTimer)
