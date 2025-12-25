@@ -116,8 +116,6 @@ hours.forEach((elem,idx)=>{
 }
 dailyPlanner()
 
-
-
 function motivationalQuote(){
 
   let quote=document.querySelector(".motivation-2 p")
@@ -136,3 +134,5 @@ quotes()
 
 }
 motivationalQuote()
+
+
