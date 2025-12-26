@@ -141,20 +141,47 @@ let startBtn=document.querySelector(".pomo-timer .start")
 let pauseBtn=document.querySelector(".pomo-timer .pause")
 let resetBtn=document.querySelector(".pomo-timer .reset")
 
+let isWorkSession=null;
 let timeInterval=null;
 let totalSeconds=(25*60)
+
 function updateTime(){
    let minutes=Math.floor(totalSeconds/60)
     let seconds=totalSeconds%60
 
-  timer.innerHTML=`${minutes}:${seconds}`
+  timer.innerHTML=`${String(minutes).padStart('2','0')}:${String(seconds).padStart('2','0')}`
 }
 
 function startTimer(){
-  timeInterval=setInterval(function(){
-      totalSeconds--
-      updateTime()
-  },100)
+  clearInterval(timeInterval)
+
+  if(isWorkSession){
+    totalSeconds=25*60
+      timeInterval=setInterval(function(){
+
+     if(totalSeconds > 0){
+       totalSeconds--
+        updateTime()
+     }else{
+      isWorkSession=false
+      clearInterval(timeInterval)
+      totalSeconds=5*60
+      timer.innerHTML='05:00'
+     }
+  },6)}else{
+    totalSeconds=5*60
+      timeInterval=setInterval(function(){
+
+     if(totalSeconds > 0){
+       totalSeconds--
+        updateTime()
+     }else{
+      isWorkSession=true
+      clearInterval(timeInterval)
+      totalSeconds=5*60
+      timer.innerHTML='25:00'
+     }
+  },6)}
 }
 startBtn.addEventListener("click",startTimer)
 

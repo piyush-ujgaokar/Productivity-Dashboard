@@ -4,6 +4,8 @@
     --tri1:#e2a61adc;
     --tri2:#654525;
     --red:red;
+    --green:rgb(16, 161, 16);
+    --blue:rgb(60, 60, 189);
 }
 
 @font-face {
@@ -393,6 +395,19 @@ section.allElem{
 
 .pomodoro-fullPage{
     display: block;
+}
+
+.pomodoro-fullPage .session{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.pomodoro-fullPage .session{
+    padding: 10px 20px;
+    background-color: var(--green);
+    font-size: 1.3vw;
+    border-radius: 10px;
 }
 
 .pomodoro-fullPage h1{
