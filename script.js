@@ -171,7 +171,7 @@ function startTimer(){
       session.style.backgroundColor='var(--blue)'
       totalSeconds=5*60
      }
-  },6)}else{
+  },1000)}else{
     
       timeInterval=setInterval(function(){
 
@@ -186,7 +186,7 @@ function startTimer(){
       session.style.backgroundColor='var(--green)'
       totalSeconds=25*60
      }
-  },6)}
+  },1000)}
 }
 startBtn.addEventListener("click",startTimer)
 
