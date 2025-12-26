@@ -135,8 +135,8 @@ quotes()
 }
 motivationalQuote()
 
-
-let timer=document.querySelector(".pomo-timer h2")
+function pomodoroTimer(){
+  let timer=document.querySelector(".pomo-timer h2")
 let startBtn=document.querySelector(".pomo-timer .start")
 let pauseBtn=document.querySelector(".pomo-timer .pause")
 let resetBtn=document.querySelector(".pomo-timer .reset")
@@ -201,3 +201,5 @@ function resetTimer(){
   updateTime()
 }
 resetBtn.addEventListener("click",resetTimer)
+}
+pomodoroTimer()
