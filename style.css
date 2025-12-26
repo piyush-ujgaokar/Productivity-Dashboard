@@ -390,13 +390,6 @@ section.allElem{
 }
 
 
-
-
-
-.pomodoro-fullPage{
-    display: block;
-}
-
 .pomodoro-fullPage .session{
     position: absolute;
     top: 30%;
